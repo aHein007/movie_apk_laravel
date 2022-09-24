@@ -5,12 +5,13 @@ namespace App\Http\Controllers\User;
 use App\Models\User;
 use App\Models\Movie;
 use App\Models\Contact;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class UserMovieController extends Controller
 {
-    public function userMovieController($id){
+    public function userMoviedetail($id){
 
         $data =Movie::where("movie_id",$id)->first();
 
@@ -18,7 +19,7 @@ class UserMovieController extends Controller
     }
 
     public function postMessage(Request $request,$id){
-        $dataUser =User::where("id",$id)->first();
+        $dataUser =User::where("id",$id)->paginate(8);
         $getId =$dataUser->id;
         $data=$this->update($request,$getId);
 
@@ -28,7 +29,16 @@ class UserMovieController extends Controller
 
     }
 
-    
+    public function userSearch(Request $request){
+        $categoryData =Category::get();
+        $input =$request->search_movie;
+        $data =Movie::where("movie_name","like","%".$input."%")->paginate(8);
+
+        return view("user.userPage")->with(["dataMovie" =>$data,"category"=>$categoryData,"movieData"=>$data]);
+
+
+    }
+
 
 
     private function update($request,$data){

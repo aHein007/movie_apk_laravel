@@ -108,9 +108,12 @@ Route::get("userPage","UserController@userPage")->name("user#userPage");
 
 Route::get("userLogout","UserController@userLogout")->name("user#Logout");
 
-Route::get("movieDetail/{id}","UserMovieController@userMovieController")->name("user#MovieController");
+Route::get("movieDetail/{id}","UserMovieController@userMoviedetail")->name("user#userMoviedetail");
 
 Route::post("postMessage/{id}","UserMovieController@postMessage")->name("user#postMessage");
+
+//search movie
+Route::get("userPage/search","UserMovieController@userSearch")->name("user#userSearch");
 
 
 
