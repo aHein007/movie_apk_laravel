@@ -39,6 +39,12 @@ class UserMovieController extends Controller
 
     }
 
+    public function userSearchCategory($id){
+        $data =Movie::where("category_id",$id)->get();
+        $categoryData =Category::get();
+        return view("user.userPage")->with(["dataMovie" =>$data,"category"=>$categoryData,"movieData"=>$data]);
+    }
+
 
 
     private function update($request,$data){

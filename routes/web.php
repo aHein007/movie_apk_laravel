@@ -112,8 +112,11 @@ Route::get("movieDetail/{id}","UserMovieController@userMoviedetail")->name("user
 
 Route::post("postMessage/{id}","UserMovieController@postMessage")->name("user#postMessage");
 
-//search movie
+//search bar movie
 Route::get("userPage/search","UserMovieController@userSearch")->name("user#userSearch");
+
+// search category movie
+Route::get("userPage/{id}","UserMovieController@userSearchCategory")->name("user#userSearchCategory");
 
 
 

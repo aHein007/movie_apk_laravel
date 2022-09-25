@@ -36,14 +36,16 @@
                 <div class="">
                     <div class="py-5 text-center">
 
-                        <form class="d-flex m-5" action="{{ route('user#userSearch') }}" method="GET">
+                        <form class="d-flex m-5 " action="{{ route('user#userSearch') }}" method="GET">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_movie">
                             <button class="btn btn-outline-dark" type="submit">Search</button>
                         </form>
 
                         @foreach ($category as $items)
                         <div class="">
-                            <div class="m-2 p-2 cursor-pointer">{{ $items->movie_category }}</div>
+                            <div class="m-2 p-2 ">
+                               <a href="{{ route('user#userSearchCategory',$items->category_id) }}" class=" text-decoration-none text-dark"> {{ $items->movie_category }}</a>
+                            </div>
                         </div>
                         @endforeach
                         <hr>
