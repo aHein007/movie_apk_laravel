@@ -52,20 +52,22 @@
                         <div class="text-center m-4 p-2">
                             <h3 class="mb-3">Start Date - End Date</h3>
 
-                            <form>
-                                <input type="date" name="" id="" class="form-control"> -
-                                <input type="date" name="" id="" class="form-control">
+                            <form action="{{ route('user#searchDate') }}" method="GET">
+                                <input type="date" name="start" id="" class="form-control"> -
+                                <input type="date" name="end" id="" class="form-control">
+                                <button type="submit" class="btn btn-outline-dark mt-4">Search</button>
                             </form>
+
                         </div>
                         <hr>
-                        <div class="text-center m-4 p-2">
+                        {{-- <div class="text-center m-4 p-2">
                             <h3 class="mb-3">Min - Max Amount</h3>
 
                             <form>
                                 <input type="number" name="" id="" class="form-control" placeholder="minimum price"> -
                                 <input type="number" name="" id="" class="form-control" placeholder="maximun price">
                             </form>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

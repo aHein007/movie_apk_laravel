@@ -45,6 +45,29 @@ class UserMovieController extends Controller
         return view("user.userPage")->with(["dataMovie" =>$data,"category"=>$categoryData,"movieData"=>$data]);
     }
 
+    public function searchDate(Request $request){
+        $start =$request->start;
+        $end =$request->end;
+        $data =Movie::get();
+        $query =Movie::get();
+
+
+
+        if(!is_null($start) && is_null($end)){
+            $query =$query->where("created_at",">=",$start);
+        }else if(is_null($start) && !is_null($end)){
+            $query =$query->where("created_at","<=",$end);
+
+        }else if(!is_null($start) && !is_null($end)){
+            $query =$query->where("created_at",">=",$start)
+                          ->where("created_at","<=",$end);
+
+        }
+
+        $categoryData =Category::get();
+        return view("user.userPage")->with(["dataMovie" =>$query,"category"=>$categoryData,"movieData"=>$query]);
+    }
+
 
 
     private function update($request,$data){

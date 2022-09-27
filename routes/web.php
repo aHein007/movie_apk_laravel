@@ -118,6 +118,8 @@ Route::get("userPage/search","UserMovieController@userSearch")->name("user#userS
 // search category movie
 Route::get("userPage/{id}","UserMovieController@userSearchCategory")->name("user#userSearchCategory");
 
+Route::get("searchDate","UserMovieController@searchDate")->name("user#searchDate");
+
 
 
 });
